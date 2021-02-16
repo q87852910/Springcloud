@@ -25,7 +25,7 @@
     <dependencyManagement>
 
         <dependencies>
-            <!--springcloud依赖-->
+            <!--springcloud依赖11-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
