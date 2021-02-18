@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiang.springcloud.dao.DeptDao">
+
+    <select id="getDeptById" parameterType="Long" resultType="com.xiang.pojo.Dept">
+
+        select * from dept where deptNo=#{id}
+
+    </select>
+
+    <select id="getAllDept" resultType="com.xiang.pojo.Dept">
+        select  * from dept
+    </select>
+
+    <insert id="addDept" parameterType="com.xiang.pojo.Dept">
+        insert into dept (deptName,depetResource) values (#{deptName},DATABASE());
+    </insert>
+
+    <select id="updatePassWord" resultType="map">
+        select user_id "userId" from sys_user where password is null
+    </select>
+
+
+    <update id="updateInfo" parameterType="list">
+        update sys_user
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="password=case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    <if test="item.password!=null">
+                        when user_id=#{item.userId} then #{item.password}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="salt =case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    <if test="item.salt!=null">
+                        when user_id=#{item.userId} then #{item.salt}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where
+        <foreach collection="list" separator="or" item="item" index="index">
+            user_id=#{item.userId}
+        </foreach>
+    </update>
+
+    <update id="updateInfoBySing" parameterType="map">
+        update sys_user set password=#{password} ,salt =#{salt} where user_id=#{userId}
+    </update>
+</mapper>

@@ -1,0 +1,16 @@
+server:
+  port: 7001
+
+eureka:
+  server:
+    enable-self-preservation: false #关闭自我保护机制,服务挂了会先暂时保存服务信息,不会立刻清除服务
+  instance:
+    appname: localhost #主机名称
+    lease-renewal-interval-in-seconds: 20 #每隔20秒发送心跳,证明服务还活着
+    lease-expiration-duration-in-seconds: 10 #服务10秒没心跳,降他从服务中移除
+  client: #客户端
+    register-with-eureka: false #false表示不在注册中心注册自己
+    fetch-registry: false # false表示自己是注册中心
+    service-url: #监控页面
+      defaultZone: http://${eureka.instance.appname}:7002/eureka/
+    registry-fetch-interval-seconds: 10 #客户端10秒获取一次服务列表
