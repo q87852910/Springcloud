@@ -6,9 +6,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #基本属性
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://49.234.72.138:3306/jawave_system?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone = GMT
+    url: jdbc:mysql://localhost:3306/db01?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone = GMT
     username: root
-    password: admin123!
+    password: root
 #      #配置初始化大小/最小/最大
 #      initial-size: 1
 #      min-idle: 1
@@ -38,14 +38,14 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 
 #Eureka
-#eureka:
-#  client:
-#    service-url:
-#     defaultZone: http://localhost:7001/eureka, http://localhost:7002/eureka
-#  instance:
-#    instance-id: spingcloud-provider-dept8001
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:7001/eureka, http://localhost:7002/eureka
+  instance:
+    instance-id: spingcloud-provider-dept8001
 
 #info
-#info:
-#  app.name: com.xiang
-#  company.name: kuang
+info:
+  app.name: com.xiang
+  company.name: kuang
