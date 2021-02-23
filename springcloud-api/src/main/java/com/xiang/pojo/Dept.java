@@ -12,8 +12,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Accessors(chain=true) //链式写法
 public class Dept implements Serializable {
-    private Long deptNo;
-    private String deptName;
-    private String deptResource;
+    public Long deptNo;
+    public String deptName;
+    public String deptResource;
 
 }

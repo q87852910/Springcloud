@@ -26,7 +26,7 @@ public class DeptController {
     @GetMapping("/consumer/dept/list")
     public List<Dept> getDeptAll(){
 
-        return feignClientService.getAllDept();
+        return feignClientService.getAllDept1();
     }
 
     @PostMapping("/consumer/dept/add")

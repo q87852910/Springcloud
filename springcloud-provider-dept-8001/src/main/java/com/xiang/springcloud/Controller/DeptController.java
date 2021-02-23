@@ -1,11 +1,14 @@
 package com.xiang.springcloud.Controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xiang.pojo.Dept;
 import com.xiang.springcloud.Service.DeptService;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,12 +33,19 @@ public class DeptController {
 
     }
     @RequestMapping("/queryById")
+    @HystrixCommand(fallbackMethod = "Hystrix")
     public Dept queryById(Long id){
-
-        return deptService.getDeptById(id);
+        Dept dept=deptService.getDeptById(id);
+        if(dept==null){
+            throw  new RuntimeException("id不存在");
+        }
+        return dept;
 
     }
 
+    public Dept Hystrix(Long id){
+       return new Dept().setDeptName("当前id不存在").setDeptResource("没有数据库");
+    }
 
    @RequestMapping("/password")
    public void setPassWord(){
