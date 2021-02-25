@@ -15,6 +15,8 @@
         <module>springcloud-eureka-7002</module>
         <module>springcloud-comsumer-feign-80</module>
         <module>sringcloud-zuul</module>
+        <module>springcloud-config-server-3344</module>
+        <module>springcloud-config-client</module>
     </modules>
 
     <packaging>pom</packaging>

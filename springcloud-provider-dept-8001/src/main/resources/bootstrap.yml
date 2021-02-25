@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: config-client  #需要连接的配置文件名
+      label: master  #Github分支
+      uri: http://localhost:3344 #连接config服务端
+      profile: dev
