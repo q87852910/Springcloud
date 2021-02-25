@@ -6,9 +6,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #基本属性
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db01?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone = GMT
+    url: jdbc:mysql://123.57.68.235:33061/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone = GMT
     username: root
-    password: root
+    password: 123456
 #      #配置初始化大小/最小/最大
 #      initial-size: 1
 #      min-idle: 1

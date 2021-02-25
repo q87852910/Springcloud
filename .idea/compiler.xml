@@ -13,6 +13,7 @@
         <module name="spingcloud-comsumer-dept-80" />
         <module name="springcloud-comsumer-feign-80" />
         <module name="springcloud-eureka-7001" />
+        <module name="sringcloud-zuul" />
       </profile>
     </annotationProcessing>
   </component>
